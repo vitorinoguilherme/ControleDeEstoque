@@ -20,6 +20,11 @@ public class Fornecedor {
         this.cep = new CEP(cep);
     }
 
+    public Fornecedor(Integer codigo, String cnpj) {
+        this.setCodigo(codigo);
+        this.setCnpj(cnpj);
+    }
+
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
