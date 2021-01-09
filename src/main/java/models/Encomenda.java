@@ -13,7 +13,6 @@ public class Encomenda {
     private Double frete;
     private Date dataPedido;
     private Date dataEntrega;
-    private Cliente cliente;
     private Transportadora transportadora;
     private List<ItemEntrada> items;
 
@@ -23,17 +22,15 @@ public class Encomenda {
      * @param frete
      * @param dataPedido
      * @param dataEntrega
-     * @param codigo_cliente
      * @param codTransportadora
      * @param cnpjTransportadora
      */
-    public Encomenda(Integer codigo, Double frete, Date dataPedido, Date dataEntrega, Integer codigo_cliente,
+    public Encomenda(Integer codigo, Double frete, Date dataPedido, Date dataEntrega,
                      Integer codTransportadora, String cnpjTransportadora) {
         this.setCodigo(codigo);
         this.setFrete(frete);
         this.setDataPedido(dataPedido);
         this.setDataEntrega(dataEntrega);
-        this.cliente = cliente;
         this.transportadora = transportadora;
         this.items = new ArrayList<>();
     }
@@ -72,14 +69,6 @@ public class Encomenda {
 
     public Date getDataEntrega() {
         return dataEntrega;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
     }
 
     public void setTransportadora(Transportadora transportadora) {
