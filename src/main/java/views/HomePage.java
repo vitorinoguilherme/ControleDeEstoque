@@ -1,19 +1,9 @@
 package views;
 
-import data.FornecedorGateway;
-import data.ProdutoGateway;
-import models.Fornecedor;
-import models.Produto;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +38,6 @@ public class HomePage {
     private JPanel prodGetAll, prodCreate, prodUpdate, prodDelete;
 
     // Selecionar Produtos
-
 
     // JTextFields of prodCreate
     // Cadastrar produto
@@ -103,32 +92,36 @@ public class HomePage {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setDefaultLookAndFeelDecorated(true);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setPreferredSize(new Dimension(1200, 700));
+        frame.setPreferredSize(new Dimension(1350, 700));
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
         // Header and breadcrumbs
-        breadcrumbs = getPanel(Color.ORANGE);
+        breadcrumbs = getPanel(Color.decode("#282a36"));
+        breadcrumbs.setBackground(Color.decode("#44475a"));
         breadcrumbs.setPreferredSize(new Dimension(10, 25));
 
         header = new JPanel(new BorderLayout());
         header.add(breadcrumbs, BorderLayout.SOUTH);
+        header.setBackground(Color.decode("#282a36"));
 
         // Sidebar and body
-        sidebar = getPanel(Color.BLACK);
+        sidebar = getPanel(Color.decode("#282a36"));
         sidebar.setPreferredSize(new Dimension(130, 10));
         sidebar.setLayout(new GridLayout(4, 1, 5, 8));
+        sidebar.setBackground(Color.decode("#282a36"));
 
-        body = getPanel(Color.RED);
-        //body.setPreferredSize(new Dimension(130, 500));
+        body = getPanel(Color.decode("#282a36"));
         body.setLayout(new BorderLayout());
+        body.setBackground(Color.decode("#282a36"));
 
         middlePanel = new JPanel(new BorderLayout());
         middlePanel.add(sidebar, BorderLayout.WEST);
         middlePanel.add(body, BorderLayout.CENTER);
 
         // Footer
-        footer = getPanel(Color.DARK_GRAY);
+        footer = getPanel(Color.decode("#282a36"));
+        footer.setBackground(Color.decode("#44475a"));
 
         // Main Panel
         panel = new JPanel(new BorderLayout());
@@ -137,92 +130,134 @@ public class HomePage {
         panel.add(middlePanel, BorderLayout.CENTER);
         panel.add(footer, BorderLayout.SOUTH);
 
-        // Switching Pages in a JFrame
+        /*####################################### Produto #######################################*/
         produto = new JPanel(new GridLayout(2, 2, 150, 50));
         produto.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
-        fornecedores = new JPanel(new GridLayout(2, 2, 150, 50));
-        fornecedores.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
-        compras = new JPanel(new GridLayout(2, 2, 150, 50));
-        compras.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
-        encomendas = new JPanel(new GridLayout(2, 2, 150, 50));
-        encomendas.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
-        // Pages with CRUD.
+        produto.setBackground(Color.decode("#282a36"));
+        // Selecionar Produto.
         prodGetAll = new JPanel(new BorderLayout());
         prodGetAll.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-
+        prodGetAll.setBackground(Color.decode("#282a36"));
+        // Cadastrar produto.
         prodCreate = new JPanel(new GridLayout(4,1, 0, 50));
         prodCreate.setBorder(BorderFactory.createEmptyBorder(50, 100, 0, 350));
-
+        prodCreate.setBackground(Color.decode("#282a36"));
         cadastrarProdutoPanel = new JPanel(new GridLayout(2,4, 20, 5));
+        cadastrarProdutoPanel.setBackground(Color.decode("#282a36"));
         fornecedorPanel = new JPanel(new GridLayout(2,1, 10, 5));
         fornecedorPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 300));
+        fornecedorPanel.setBackground(Color.decode("#282a36"));
         informacoesPanel = new JPanel(new GridLayout(3,3, 20, 5));
+        informacoesPanel.setBackground(Color.decode("#282a36"));
         produtoSavePanel = new JPanel(new BorderLayout());
         produtoSavePanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 50, 460));
-
+        produtoSavePanel.setBackground(Color.decode("#282a36"));
+        // Atualizar Produto
         prodUpdate = new JPanel(new BorderLayout());
         prodUpdate.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        prodUpdate.setBackground(Color.decode("#282a36"));
         atualizarProdutoPanel = new JPanel(new GridLayout(8, 2, 0, 0));
-
+        atualizarProdutoPanel.setBackground(Color.decode("#282a36"));
+        // Deletar Produto
         prodDelete = new JPanel(new GridLayout(2, 2, 150, 50));
         prodDelete.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        prodDelete.setBackground(Color.decode("#282a36"));
         deletarProdutoPanel = new JPanel(new  GridLayout(3, 1, 0, 0));
+        deletarProdutoPanel.setBackground(Color.decode("#282a36"));
 
+        /*##################################### Fornecedor ######################################*/
+        fornecedores = new JPanel(new GridLayout(2, 2, 150, 50));
+        fornecedores.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
+        fornecedores.setBackground(Color.decode("#282a36"));
+        // Selecionar Fornecedor.
         fornGetAll = new JPanel(new GridLayout(2, 2, 150, 50));
         fornGetAll.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        fornGetAll.setBackground(Color.decode("#282a36"));
+        // Criar Fornecedor.
         fornCreate = new JPanel(new GridLayout(2, 2, 150, 50));
         fornCreate.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        fornCreate.setBackground(Color.decode("#282a36"));
+        // Atualizar Fornecedor.
         fornUpdate = new JPanel(new GridLayout(2, 2, 150, 50));
         fornUpdate.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        fornUpdate.setBackground(Color.decode("#282a36"));
+        // Deletar Fornecedor.
         fornDelete = new JPanel(new GridLayout(2, 2, 150, 50));
         fornDelete.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
+        fornDelete.setBackground(Color.decode("#282a36"));
 
+        /*##################################### Compras ######################################*/
+        compras = new JPanel(new GridLayout(2, 2, 150, 50));
+        compras.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
+        compras.setBackground(Color.decode("#282a36"));
+        // Selecionar Compras.
         compGetAll = new JPanel(new GridLayout(2, 2, 150, 50));
         compGetAll.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        compGetAll.setBackground(Color.decode("#282a36"));
+        // Criar Compras.
         compCreate = new JPanel(new GridLayout(2, 2, 150, 50));
         compCreate.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        compCreate.setBackground(Color.decode("#282a36"));
+        // Atualizar Compras.
         compUpdate = new JPanel(new GridLayout(2, 2, 150, 50));
         compUpdate.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        compUpdate.setBackground(Color.decode("#282a36"));
+        // Deletar Compras.
         compDelete = new JPanel(new GridLayout(2, 2, 150, 50));
         compDelete.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
+        compDelete.setBackground(Color.decode("#282a36"));
 
+        /*##################################### Encomenda ######################################*/
+        encomendas = new JPanel(new GridLayout(2, 2, 150, 50));
+        encomendas.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
+        encomendas.setBackground(Color.decode("#282a36"));
+        // Selecionar Encomenda.
         encoGetAll = new JPanel(new GridLayout(2, 2, 150, 50));
         encoGetAll.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        encoGetAll.setBackground(Color.decode("#282a36"));
+        // Criar Encomenda.
         encoCreate = new JPanel(new GridLayout(2, 2, 150, 50));
         encoCreate.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        encoCreate.setBackground(Color.decode("#282a36"));
+        // Atualizar Encomenda.
         encoUpdate = new JPanel(new GridLayout(2, 2, 150, 50));
         encoUpdate.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
-
+        encoUpdate.setBackground(Color.decode("#282a36"));
+        // Deletar Encomenda.
         encoDelete = new JPanel(new GridLayout(2, 2, 150, 50));
         encoDelete.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
+        encoDelete.setBackground(Color.decode("#282a36"));
 
         // Create UI elements
         title = new JLabel(titleFrame, SwingConstants.CENTER);
-        title.setFont(new Font("Calibri", Font.BOLD, 24));
+        title.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
+        title.setForeground(Color.decode("#f8f8f2"));
 
-        Font sideBarFont = new Font("Calibri", Font.BOLD, 16);
+        Font myFont = new Font("Roboto", Font.PLAIN, 15);
         productButton = new JButton("Produtos");
-        productButton.setFont(sideBarFont);
+        productButton.setFont(myFont);
+        productButton.setForeground(Color.decode("#f8f8f2"));
+        productButton.setBackground(Color.decode("#44475a"));
+        productButton.setOpaque(true);
+        productButton.setBorderPainted(false);
         fornecedoresButton = new JButton("Fornecedores");
-        fornecedoresButton.setFont(sideBarFont);
+        fornecedoresButton.setFont(myFont);
+        fornecedoresButton.setForeground(Color.decode("#f8f8f2"));
+        fornecedoresButton.setBackground(Color.decode("#44475a"));
+        fornecedoresButton.setOpaque(true);
+        fornecedoresButton.setBorderPainted(false);
         purchaseButton = new JButton("Compras");
-        purchaseButton.setFont(sideBarFont);
+        purchaseButton.setFont(myFont);
+        purchaseButton.setForeground(Color.decode("#f8f8f2"));
+        purchaseButton.setBackground(Color.decode("#44475a"));
+        purchaseButton.setOpaque(true);
+        purchaseButton.setBorderPainted(false);
         encomendaButton = new JButton("Encomendas");
-        encomendaButton.setFont(sideBarFont);
+        encomendaButton.setFont(myFont);
+        encomendaButton.setForeground(Color.decode("#f8f8f2"));
+        encomendaButton.setBackground(Color.decode("#44475a"));
+        encomendaButton.setOpaque(true);
+        encomendaButton.setBorderPainted(false);
 
         //Add UI element to frame
         header.add(title, BorderLayout.NORTH);
@@ -235,90 +270,120 @@ public class HomePage {
         List<String> opcoes = Arrays.asList("Selecionar", "Criar", "Atualizar", "Deletar");
         for (String opc : opcoes) {
             JButton buttonProd = new JButton("" + opc + " produtos");
-            buttonProd.setFont(new Font("Calibri", Font.ITALIC, 14));
+            buttonProd.setFont(myFont);
+            buttonProd.setForeground(Color.decode("#f8f8f2"));
+            buttonProd.setBackground(Color.decode("#44475a"));
+            buttonProd.setOpaque(true);
+            buttonProd.setBorderPainted(false);
             productButtons.add(buttonProd);
             produto.add(buttonProd);
 
             JButton buttonForn = new JButton("" + opc + " fornecedores");
-            buttonForn.setFont(new Font("Calibri", Font.ITALIC, 14));
+            buttonForn.setFont(myFont);
+            buttonForn.setForeground(Color.decode("#f8f8f2"));
+            buttonForn.setBackground(Color.decode("#44475a"));
+            buttonForn.setOpaque(true);
+            buttonForn.setBorderPainted(false);
             fornecedoresButtons.add(buttonForn);
             fornecedores.add(buttonForn);
 
             JButton buttonComp = new JButton("" + opc + " compras");
-            buttonComp.setFont(new Font("Calibri", Font.ITALIC, 14));
+            buttonComp.setFont(myFont);
+            buttonComp.setForeground(Color.decode("#f8f8f2"));
+            buttonComp.setBackground(Color.decode("#44475a"));
+            buttonComp.setOpaque(true);
+            buttonComp.setBorderPainted(false);
             purchaseButtons.add(buttonComp);
             compras.add(buttonComp);
 
             JButton buttonEnco = new JButton("" + opc + " encomendas");
-            buttonEnco.setFont(new Font("Calibri", Font.ITALIC, 14));
+            buttonEnco.setFont(myFont);
+            buttonEnco.setForeground(Color.decode("#f8f8f2"));
+            buttonEnco.setBackground(Color.decode("#44475a"));
+            buttonEnco.setOpaque(true);
+            buttonEnco.setBorderPainted(false);
             encomendaButtons.add(buttonEnco);
             encomendas.add(buttonEnco);
         }
 
         // Cadastrar produto
-        cadastrarProdutoPanel.setBorder(new TitledBorder("Produto"));
-        cadastrarProdutoPanel.add(new JLabel("Nome do Produto:"));
+        cadastrarProdutoPanel.setBorder(createTitleBorder("Produto",Color.decode("#f8f8f2")));
+        cadastrarProdutoPanel.add(createLabel("Nome do Produto:", Color.decode("#f8f8f2")));
         cadastrarProdutoPanel.add(nomeProduto = new JTextField());
-        cadastrarProdutoPanel.add(new JLabel("Codigo da Categoria:"));
+        cadastrarProdutoPanel.add(createLabel("Codigo da Categoria:", Color.decode("#f8f8f2")));
         cadastrarProdutoPanel.add(codigoCategoria = new JTextField());
-        cadastrarProdutoPanel.add(new JLabel("Validade:"));
+        cadastrarProdutoPanel.add(createLabel("Validade:", Color.decode("#f8f8f2")));
         cadastrarProdutoPanel.add(validadeProduto = new JTextField());
-        cadastrarProdutoPanel.add(new JLabel("Quantidade Minima:"));
+        cadastrarProdutoPanel.add(createLabel("Quantidade Minima:", Color.decode("#f8f8f2")));
         cadastrarProdutoPanel.add(qtdMinima = new JTextField());
-        fornecedorPanel.setBorder(new TitledBorder("Fornecedor"));
-        fornecedorPanel.add(new JLabel("Codigo fornecedor:"));
+        cadastrarProdutoPanel.setFont(myFont);
+        fornecedorPanel.setBorder(createTitleBorder("Fornecedor",Color.decode("#f8f8f2")));
+        fornecedorPanel.add(createLabel("Codigo fornecedor:", Color.decode("#f8f8f2")));
         fornecedorPanel.add(codigoFornecedor = new JTextField());
-        fornecedorPanel.add(new JLabel("CNPJ fornecedor:"));
+        fornecedorPanel.add(createLabel("CNPJ fornecedor:", Color.decode("#f8f8f2")));
         fornecedorPanel.add(CNPJFornecedor = new JTextField());
-        informacoesPanel.setBorder(new TitledBorder("Dimensoes / Caracteristicas"));
-        informacoesPanel.add(new JLabel("Altura:"));
+        informacoesPanel.setBorder(createTitleBorder("Dimensoes / Caracteristicas",Color.decode("#f8f8f2")));
+        informacoesPanel.add(createLabel("Altura:", Color.decode("#f8f8f2")));
         informacoesPanel.add(altura = new JTextField());
-        informacoesPanel.add(new JLabel("Largura:"));
+        informacoesPanel.add(createLabel("Largura:", Color.decode("#f8f8f2")));
         informacoesPanel.add(largura = new JTextField());
-        informacoesPanel.add(new JLabel("Cor:"));
+        informacoesPanel.add(createLabel("Cor:", Color.decode("#f8f8f2")));
         informacoesPanel.add(cor = new JTextField());
-        informacoesPanel.add(new JLabel("Peso:"));
+        informacoesPanel.add(createLabel("Peso:", Color.decode("#f8f8f2")));
         informacoesPanel.add(peso = new JTextField());
-        informacoesPanel.add(new JLabel("Descricao:"));
+        informacoesPanel.add(createLabel("Descricao:", Color.decode("#f8f8f2")));
         informacoesPanel.add(descricao = new JTextField());
         produtoSavePanel.add(produtoSaveButton = new JButton("Salvar produto"));
-
+        produtoSaveButton.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
+        produtoSaveButton.setForeground(Color.decode("#f8f8f2"));
+        produtoSaveButton.setBackground(Color.decode("#6272a4"));
+        produtoSaveButton.setOpaque(true);
+        produtoSaveButton.setBorder(new LineBorder(Color.decode("#44475a")));
         prodCreate.add(cadastrarProdutoPanel);
         prodCreate.add(fornecedorPanel);
         prodCreate.add(informacoesPanel);
         prodCreate.add(produtoSavePanel);
         
         // Atualizar Produto
-        atualizarProdutoPanel.setBorder(new TitledBorder("> Atualizar Produto"));
-        atualizarProdutoPanel.add(new JLabel("CODIGO:"));
+        atualizarProdutoPanel.setBorder(createTitleBorder("> Atualizar Produto",Color.decode("#f8f8f2")));
+        atualizarProdutoPanel.add(createLabel("CODIGO:", Color.decode("#f8f8f2")));
         atualizarProdutoPanel.add(codigoUpdate = new JTextField());
-        atualizarProdutoPanel.add(new JLabel("Nome do Produto:"));
+        atualizarProdutoPanel.add(createLabel("Nome do Produto:", Color.decode("#f8f8f2")));
         atualizarProdutoPanel.add(nomeUpdate = new JTextField());
-        atualizarProdutoPanel.add(new JLabel("Descricao:"));
+        atualizarProdutoPanel.add(createLabel("Descricao:", Color.decode("#f8f8f2")));
         atualizarProdutoPanel.add(descricaoUpdate = new JTextField());
-        atualizarProdutoPanel.add(new JLabel("Peso:"));
+        atualizarProdutoPanel.add(createLabel("Peso:", Color.decode("#f8f8f2")));
         atualizarProdutoPanel.add(pesoUpdate = new JTextField());
-        atualizarProdutoPanel.add(new JLabel("Cor:"));
+        atualizarProdutoPanel.add(createLabel("Cor:", Color.decode("#f8f8f2")));
         atualizarProdutoPanel.add(corUpdate = new JTextField());
-        atualizarProdutoPanel.add(new JLabel("Altura:"));
+        atualizarProdutoPanel.add(createLabel("Altura:", Color.decode("#f8f8f2")));
         atualizarProdutoPanel.add(alturaUpdate = new JTextField());
-        atualizarProdutoPanel.add(new JLabel("Largura:"));
+        atualizarProdutoPanel.add(createLabel("Largura:", Color.decode("#f8f8f2")));
         atualizarProdutoPanel.add(larguraUpdate = new JTextField());
-
         produtoUpdateButton = new JButton("atualizar");
         produtoUpdateButton.setPreferredSize(new Dimension(200,40));
+        produtoUpdateButton.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
+        produtoUpdateButton.setForeground(Color.decode("#f8f8f2"));
+        produtoUpdateButton.setBackground(Color.decode("#6272a4"));
+        produtoUpdateButton.setOpaque(true);
+        produtoUpdateButton.setBorder(new LineBorder(Color.decode("#44475a")));
         JPanel panelUpdate = new JPanel();
+        panelUpdate.setBackground(Color.decode("#282a36"));
         panelUpdate.add(produtoUpdateButton);
-
         prodUpdate.add(atualizarProdutoPanel, BorderLayout.CENTER);
         prodUpdate.add(panelUpdate, BorderLayout.AFTER_LAST_LINE);
-//
+
         // Deletar produto
-        deletarProdutoPanel.setBorder(new TitledBorder("> Deletar Produto"));
-        deletarProdutoPanel.add(new JLabel("Codigo Produto:"));
+        deletarProdutoPanel.setBorder(createTitleBorder("> Deletar Produto",Color.decode("#f8f8f2")));
+        deletarProdutoPanel.add(createLabel("Codigo Produto:", Color.decode("#f8f8f2")));
         deletarProdutoPanel.add(codigoDelete = new JTextField());
         deletarProdutoPanel.add(produtoDeleteButton = new JButton("deletar"));
-
+        produtoDeleteButton.setPreferredSize(new Dimension(200,40));
+        produtoDeleteButton.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
+        produtoDeleteButton.setForeground(Color.decode("#f8f8f2"));
+        produtoDeleteButton.setBackground(Color.decode("#6272a4"));
+        produtoDeleteButton.setOpaque(true);
+        produtoDeleteButton.setBorder(new LineBorder(Color.decode("#44475a")));
         prodDelete.add(deletarProdutoPanel);
 
         setAllVisibleFalse();
@@ -352,6 +417,24 @@ public class HomePage {
         // Configure Panels in Frame.
         frame.setContentPane(panel);
         frame.pack();
+    }
+
+    private TitledBorder createTitleBorder(String tbText, Color color) {
+        TitledBorder titleBorder = new TitledBorder(tbText);
+        titleBorder.setBorder(new LineBorder(Color.decode("#44475a")));
+        titleBorder.setTitleColor(color);
+        titleBorder.setTitlePosition(TitledBorder.ABOVE_TOP);
+
+        return titleBorder;
+    }
+
+    private JLabel createLabel(String lbText, Color color) {
+        JLabel label = new JLabel(lbText);
+        label.setOpaque(true);
+        label.setForeground(color);
+        label.setBackground(Color.decode("#282a36"));
+        label.setFont(new Font(Font.DIALOG_INPUT, Font.PLAIN, 14));
+        return label;
     }
 
     private JPanel getPanel(Color color) {

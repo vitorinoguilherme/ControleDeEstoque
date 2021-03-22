@@ -9,8 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+
 
 public class ProdutoController {
     private HomePage homePage;
@@ -86,6 +85,7 @@ public class ProdutoController {
         DefaultTableModel modelProduto = new DefaultTableModel();
         Object[] columnsNameProduto = new Object[12];
 
+
         columnsNameProduto[0] = "codigo";
         columnsNameProduto[1] = "nome";
         columnsNameProduto[2] = "quantidade_minima";
@@ -126,7 +126,6 @@ public class ProdutoController {
         }
 
         tableProduto.setModel(modelProduto);
-
         JScrollPane pane = new JScrollPane(tableProduto);
 
         homePage.getProdGetAll().add(pane, BorderLayout.CENTER);
