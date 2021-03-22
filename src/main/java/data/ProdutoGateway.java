@@ -127,8 +127,8 @@ public class ProdutoGateway {
      * @throws SQLException
      */
     public void update(String nome, String descricao, Double peso, String cor,
-                       Double altura, Double largura) throws SQLException {
-        String SQL_UPDATE = "UPDATE Produto SET nome = ?, descricao = ?, peso = ?, cor = ? altura = ?, largura = ?" +
+                       Double altura, Double largura, int codigo) throws SQLException {
+        String SQL_UPDATE = "UPDATE Produto SET nome = ?, descricao = ?, peso = ?, cor = ?, altura = ?, largura = ? " +
                 "WHERE codigo = ?;";
 
         PreparedStatement pstm = conn.prepareStatement(SQL_UPDATE);
@@ -139,6 +139,7 @@ public class ProdutoGateway {
         pstm.setString(4, cor);
         pstm.setDouble(5, altura);
         pstm.setDouble(6, largura);
+        pstm.setDouble(7, (int) codigo);
 
         pstm.executeUpdate();
         pstm.close();

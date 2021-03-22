@@ -87,4 +87,56 @@ public class Produto {
     public void setLargura(Double largura) {
         this.largura = largura;
     }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Integer getQuantidadeMinima() {
+        return quantidadeMinima;
+    }
+
+    public Date getValidade() {
+        return validade;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Double getPeso() {
+        return peso;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public Double getAltura() {
+        return altura;
+    }
+
+    public Double getLargura() {
+        return largura;
+    }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 }
